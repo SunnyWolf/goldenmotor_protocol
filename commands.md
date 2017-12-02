@@ -2,11 +2,13 @@
 
 ## Navigation
 
-[TOC]
+1. [Commands](#commands)
+    1. [2 - Echo](#cmd_2)
+    2. [40 - Send protection settings to controller](#cmd_40)
 
-## Commands
+## Commands <a name="commands"></a>
 
-### 2 - Echo
+### 2 - Echo <a name="cmd_2"></a>
 Check connection
 
 **Send**
@@ -21,7 +23,7 @@ Check connection
 |--------|--------|--------|--------|
 |  0x66  |  0x02  |  0x20  |  0x68  |
 
-### 40 - Send protection settings to controller
+### 40 - Send protection settings to controller <a name="cmd_40"></a>
 **Settings list:**
 1. HEA - Hall electrical angle
 > 0 - 120

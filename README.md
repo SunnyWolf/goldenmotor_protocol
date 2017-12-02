@@ -3,9 +3,13 @@ This repository contains infornation about data exchange protocol of Goldenmotor
 
 ## Navigation
 
-[TOC]
+1. [Intro](#intro)
+2. [Protocol description](#protocol_description)
+    1. [Data packets](#data_packets)
 
-## Intro
+
+
+## Intro <a name="intro"></a>
 Many times I was tring to get info from Goldenmotor's managers about possibility connection their controller to external systems, but every time they told me that it's not possible and no aswer me any more. But if we look at their site we can find info "Controller has UART, CAN, Bluetooth interfaces". So I decided to conduct a study and present some results here.
 
 In this repo you will find information about connection protocol and C code examples from PI-800 program.
@@ -13,9 +17,9 @@ In this repo you will find information about connection protocol and C code exam
 If you have additional information about Goldenmotor's controllers and you want to help this project, please contact me or make push request.
 
 
-## Protocol description
+##Protocol description <a name="protocol_description"></a>
 
-### Data packets
+###Data packets <a name="data_packets"></a>
 All data packets in this protocol has length <= 256 bytes
 
 | START | CMD    | STATUS | Payload       | CRC    |
