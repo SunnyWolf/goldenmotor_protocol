@@ -60,7 +60,7 @@ Check connection
 
 11. LVPE - Low voltage protection exit value
     > value = 228 * x
-    
+
     > 0.0 < x < 4.0
 
 12. LVT - Low voltage triggering current reducing

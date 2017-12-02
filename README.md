@@ -20,7 +20,7 @@ If you have additional information about Goldenmotor's controllers and you want 
 ## Protocol description <a name="protocol_description"></a>
 
 ### Data packets <a name="data_packets"></a>
-All data packets in this protocol has length <= 256 bytes
+All data packets in this protocol has length <= 256 bytes.
 
 | START | CMD    | STATUS | Payload       | CRC    |
 |-------|--------|:------:|---------------|--------|
@@ -38,24 +38,26 @@ For more info see [list of commands](https://github.com/SunnyWolf/goldenmotor_pr
 
 **STATUS**
 
-This fild indicates that there are errors in a data packet
+This fild indicates that there are errors in a data packet.
 
-> 0x00 - Default value
+> **0x00** - Default value.
 
-> 0x20 - OK, packet received successfully
+> **0x20** - OK, packet received successfully.
 
-If there's any error in data, controller sends response with STATUS != 0x20
+If there's any error in data, controller sends response with **STATUS != 0x20**
 
 **Payload**
+
 According code that I find in PI-800, data payload length can be 0 or 32 bytes.
 If payload length = 0, controller request for data or check connection.
 If payload length = 32, controller send data to controller.
-Payload contain items with 2 bytes length, first byte is High, second is Low
+Payload contain items with 2 bytes length, first byte is High, second is Low.
 
 |   1   |   2   |
 |-------|-------|
 | HByte | LByte |
 
 **CRC**
-Data verification value (1 byte)
+
+Data verification value (1 byte).
 The value is calculated by summing all bytes in data packet and takes low byte.
