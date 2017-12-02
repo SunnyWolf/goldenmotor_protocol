@@ -24,7 +24,9 @@ Check connection
 |  0x66  |  0x02  |  0x20  |  0x68  |
 
 ### 40 - Send protection settings to controller <a name="cmd_40"></a>
+
 **Settings list:**
+
 1. HEA - Hall electrical angle
     > 0 - 120
 
@@ -66,7 +68,7 @@ Check connection
 
 13. CFG - Config flags:
     > bit 5:  1
-    
+
     > bit 8:  Clear undervoltage state while throttle off
 
 	> bit 11: Low voltage protection enabled

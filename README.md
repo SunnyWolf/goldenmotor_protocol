@@ -27,14 +27,17 @@ All data packets in this protocol has length <= 256 bytes
 | 0x66  | 1 byte | 1 byte |0 .. 32 bytes  | 1 byte |
 
 **START**
+
 Start byte **0x66**.
 All packets start with this byte.
 
 **CMD**
+
 Command type.
 For more info see [list of commands](https://github.com/SunnyWolf/goldenmotor_protocol/blob/master/commands.md) page.
 
 **STATUS**
+
 This fild indicates that there are errors in a data packet
 
 > 0x00 - Default value
