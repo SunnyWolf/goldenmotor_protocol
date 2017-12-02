@@ -17,9 +17,9 @@ In this repo you will find information about connection protocol and C code exam
 If you have additional information about Goldenmotor's controllers and you want to help this project, please contact me or make push request.
 
 
-##Protocol description <a name="protocol_description"></a>
+## Protocol description <a name="protocol_description"></a>
 
-###Data packets <a name="data_packets"></a>
+### Data packets <a name="data_packets"></a>
 All data packets in this protocol has length <= 256 bytes
 
 | START | CMD    | STATUS | Payload       | CRC    |
@@ -38,6 +38,7 @@ For more info see [list of commands](https://github.com/SunnyWolf/goldenmotor_pr
 This fild indicates that there are errors in a data packet
 
 > 0x00 - Default value
+
 > 0x20 - OK, packet received successfully
 
 If there's any error in data, controller sends response with STATUS != 0x20
