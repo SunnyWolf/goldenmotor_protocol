@@ -3,12 +3,13 @@
 ## Navigation
 
 1. [Commands](#commands)
-    1. [2 - Echo](#cmd_2)
-    2. [40 - Send protection settings to controller](#cmd_40)
+    1. [0x02 - Echo](#cmd_2)
+    2. [0x18 - Get protection settings](#cmd_18)
+    2. [0x28 - Set protection settings](#cmd_18)
 
 ## Commands <a name="commands"></a>
 
-### 2 - Echo <a name="cmd_2"></a>
+### 0x02 - Echo <a name="cmd_2"></a>
 Check connection
 
 **Send**
@@ -21,9 +22,9 @@ Check connection
 
 |  START |  CMD   | STATUS |  CRC   |
 |--------|--------|--------|--------|
-|  0x66  |  0x02  |  0x20  |  0x68  |
+|  0x66  |  0x02  |  0x00  |  0x68  |
 
-### 40 - Send protection settings to controller <a name="cmd_40"></a>
+### 0x18 / 0x28 - Protection settings<a name="cmd_18"></a>
 
 **Settings list:**
 
@@ -34,7 +35,7 @@ Check connection
 
 2. PAO - Phase angle offset
     > value = 182.04 * x
-    
+
     > -180 <= x <= 180
 
 3. PP  - Pole pairs
@@ -85,16 +86,16 @@ Check connection
 **Send**
 
 |START | CMD  | STATUS | HEA     | PAO     | PP      | MS      | WS      | SV      | HW      |
-|------|------|:------:|---------|---------|---------|---------|---------|---------|---------|
+|------|------|:------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|
 | 0x66 | 0x28 |  0x00  | 2 bytes | 2 bytes | 2 bytes | 2 bytes | 2 bytes | 2 bytes | 2 bytes |
 
 | HWE     | MWV     | LVP     | LVPE    |      ?      | LVT     | CFG     | SPT     | CRC     |
-|---------|---------|---------|---------|-------------|---------|---------|---------|---------|
+|:-------:|:-------:|:-------:|:-------:|:-----------:|:-------:|:-------:|:-------:|:-------:|
 | 2 bytes | 2 bytes | 2 bytes | 2 bytes | 2a 60 01 c8 | 2 bytes | 2 bytes | 2 bytes | 1 byte  |
 
 **Response**
 
-|  START |  CMD   | STATUS |  CRC   |
-|--------|--------|--------|--------|
-|  0x66  |  0x28  |  0x20  |  0xAE  |
+|  START |  CMD   | Length  |  CRC   |
+|--------|--------|:-------:|--------|
+|  0x66  |  0x28  |  0x00   |  0x8E  |
 

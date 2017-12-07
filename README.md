@@ -22,7 +22,7 @@ If you have additional information about Goldenmotor's controllers and you want 
 ### Data packets <a name="data_packets"></a>
 All data packets in this protocol has length <= 256 bytes.
 
-| START | CMD    | STATUS | Payload       | CRC    |
+| START | CMD    | Length | Payload       | CRC    |
 |-------|--------|:------:|---------------|--------|
 | 0x66  | 1 byte | 1 byte |0 .. 32 bytes  | 1 byte |
 
@@ -36,19 +36,13 @@ All packets start with this byte.
 Command type.
 For more info see [list of commands](https://github.com/SunnyWolf/goldenmotor_protocol/blob/master/commands.md) page.
 
-**STATUS**
+**Length**
 
-This fild indicates that there are errors in a data packet.
-
-> **0x00** - Default value.
-
-> **0x20** - OK, packet received successfully.
-
-If there's any error in data, controller sends response with **STATUS != 0x20**
+This fild indicates payload length.
 
 **Payload**
 
-According code that I find in PI-800, data payload length can be 0 or 32 bytes.
+According code that I found in PI-800, data payload length can be 0 or 32 bytes.
 If payload length = 0, controller request for data or check connection.
 If payload length = 32, controller send data to controller.
 Payload contain items with 2 bytes length, first byte is High, second is Low.
