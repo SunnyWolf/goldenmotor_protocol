@@ -1,11 +1,14 @@
-# List of commands
+# List of commands and parameters
 
 ## Navigation
 
 1. [Commands](#commands)
     1. [0x02 - Echo](#cmd_2)
-    2. [0x18 - Get protection settings](#cmd_18)
-    2. [0x28 - Set protection settings](#cmd_18)
+    2. [0x10 - Read parameter](#cmd_read)
+    3. [0x20 - Write parameter](#cmd_write)
+
+2. [Parameters](#parameters)
+    1. [0x08 - Protection settings](#param_8)
 
 ## Commands <a name="commands"></a>
 
@@ -14,17 +17,39 @@ Check connection
 
 **Send**
 
-|  START |  CMD   | STATUS |  CRC   |
-|--------|--------|--------|--------|
+|  START |  CMD   | LENGTH |  CRC   |
+|:------:|:------:|:------:|:------:|
 |  0x66  |  0x02  |  0x00  |  0x68  |
 
 **Response**
 
-|  START |  CMD   | STATUS |  CRC   |
-|--------|--------|--------|--------|
+|  START |  CMD   | LENGTH |  CRC   |
+|:------:|:------:|:------:|:------:|
 |  0x66  |  0x02  |  0x00  |  0x68  |
 
-### 0x18 / 0x28 - Protection settings<a name="cmd_18"></a>
+### 0x10 - Read parameter <a name="cmd_read"></a>
+This command tells controller send selected parameter values to user.
+CMD filed is a sum of READ value and PARAMETER value.
+
+**Example (reading protection settings)**
+
+|  START |  CMD   | LENGTH |  CRC   |
+|:------:|:------:|:------:|:------:|
+|  0x66  |  0x18  |  0x00  |  0x7E  |
+
+### 0x20 - Write parameter<a name="cmd_write"></a>
+This command is sends values of selected parameter to controller.
+CMD filed is a sum of WRITE value and PARAMETER value.
+
+**Example**
+
+|  START |  CMD   | LENGTH | PAYLOAD... |  CRC   |
+|:------:|:------:|:------:|:----------:|:------:|
+|  0x66  |  0x28  | 1 byte |  N bytes   | 1 byte |
+
+## Parameters <a name="parameters"></a>
+
+### 0x08 - Protection settings<a name="param_8"></a>
 
 **Settings list:**
 
@@ -83,11 +108,11 @@ Check connection
 14. SPT - Stall protection time
 	> value = 10 * x
 
-**Send**
+**Sending parameter to controller**
 
-|START | CMD  | STATUS | HEA     | PAO     | PP      | MS      | WS      | SV      | HW      |
-|------|------|:------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|
-| 0x66 | 0x28 |  0x00  | 2 bytes | 2 bytes | 2 bytes | 2 bytes | 2 bytes | 2 bytes | 2 bytes |
+|START | CMD  | LENGTH | HEA     | PAO     | PP      | MS      | WS      | SV      | HW      |
+|:----:|:----:|:------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|
+| 0x66 | 0x28 |  0x20  | 2 bytes | 2 bytes | 2 bytes | 2 bytes | 2 bytes | 2 bytes | 2 bytes |
 
 | HWE     | MWV     | LVP     | LVPE    |      ?      | LVT     | CFG     | SPT     | CRC     |
 |:-------:|:-------:|:-------:|:-------:|:-----------:|:-------:|:-------:|:-------:|:-------:|
@@ -95,7 +120,7 @@ Check connection
 
 **Response**
 
-|  START |  CMD   | Length  |  CRC   |
-|--------|--------|:-------:|--------|
+|  START |  CMD   | LENGTH  |  CRC   |
+|:------:|:------:|:-------:|:------:|
 |  0x66  |  0x28  |  0x00   |  0x8E  |
 
