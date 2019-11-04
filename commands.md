@@ -53,46 +53,46 @@ CMD filed is a sum of WRITE value and PARAMETER value.
 
 **Settings list:**
 
-1. HEA - Hall electrical angle
+1. HEA - Hall electrical angle <a name="p8_HEA"></a>
     > 0 - 120
 
     > 1 - 60
 
-2. PAO - Phase angle offset
+2. PAO - Phase angle offset <a name="p8_PAO"></a>
     > value = 182.04 * x
 
     > -180 <= x <= 180
 
-3. PP  - Pole pairs
+3. PP  - Pole pairs <a name="p8_PP"></a>
     > 2 <= value <= 28
 
-4. MS  - Motor speed
+4. MS  - Motor speed <a name="p8_MS"></a>
     > 1 <= value <= 10500
 
-5. WD  - Warranty date
-6. SV  - Software version
+5. WD  - Warranty date <a name="p8_WD"></a>
+6. SV  - Software version <a name="p8_SV"></a>
 
-7. HW  - High voltaige protection value
+7. HWP  - High voltaige protection value <a name="p8_HWP"></a>
     > value = 228 * x
 
-8. HWE - High voltaige protection exit value
+8. HWPE - High voltaige protection exit value <a name="p8_HWPE"></a>
     > value = 228 * x
 
-9. MWV - Minimum work voltage
+9. MWV - Minimum work voltage <a name="p8_MWV"></a>
     > value = 228 * x
 
-10. LVP - Low voltage protection value
+10. LVP - Low voltage protection value <a name="p8_LVP"></a>
     > value = 228 * x
 
-11. LVPE - Low voltage protection exit value
+11. LVPE - Low voltage protection exit value <a name="p8_LVPE"></a>
     > value = 228 * x
 
     > 0.0 < x < 4.0
 
-12. LVT - Low voltage triggering current reducing
+12. LVT - Low voltage triggering current reducing <a name="p8_LVT"></a>
     > value = 228 * x
 
-13. CFG - Config flags:
+13. CFG - Config flags: <a name="p8_CFG"></a>
     > bit 5:  1
 
     > bit 8:  Clear undervoltage state while throttle off
@@ -105,18 +105,18 @@ CMD filed is a sum of WRITE value and PARAMETER value.
 
 	> bit 15: Motor blockage protection enabled (always 1)
 
-14. SPT - Stall protection time
+14. SPT - Stall protection time <a name="p8_SPT"></a>
 	> value = 10 * x
 
 **Sending parameter to controller**
 
-|START | CMD  | LENGTH | HEA     | PAO     | PP      | MS      | WS      | SV      | HW      |
-|:----:|:----:|:------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|
-| 0x66 | 0x28 |  0x20  | 2 bytes | 2 bytes | 2 bytes | 2 bytes | 2 bytes | 2 bytes | 2 bytes |
+|START | CMD  | LENGTH |[HEA](#p8_HEA)|[PAO](#p8_PAO)|[PP](#p8_PP)|[MS](#p8_MS)|[WD](#p8_WD)|[SV](#p8_SV)|[HWP](#p8_HWP)|
+|:----:|:----:|:------:|:------------:|:------------:|:----------:|:----------:|:----------:|:----------:|:------------:|
+| 0x66 | 0x28 |  0x20  |   2 bytes    |   2 bytes    |  2 bytes   |  2 bytes   |  2 bytes   |  2 bytes   |   2 bytes    |
 
-| HWE     | MWV     | LVP     | LVPE    |      ?      | LVT     | CFG     | SPT     | CRC     |
-|:-------:|:-------:|:-------:|:-------:|:-----------:|:-------:|:-------:|:-------:|:-------:|
-| 2 bytes | 2 bytes | 2 bytes | 2 bytes | 2a 60 01 c8 | 2 bytes | 2 bytes | 2 bytes | 1 byte  |
+|[HWPE](#p8_HWPE)|[MWV](#p8_MWV)|[LVP](#p8_LVP)|[LVPE](#p8_LVPE)|      ?      |[LVT](#p8_LVT)|[CFG](#p8_CFG)|[SPT](#p8_SPT)|   CRC   |
+|:--------------:|:------------:|:------------:|:--------------:|:-----------:|:------------:|:------------:|:------------:|:-------:|
+|    2 bytes     |   2 bytes    |   2 bytes    |    2 bytes     | 2a 60 01 c8 |   2 bytes    |   2 bytes    |   2 bytes    | 1 byte  |
 
 **Response**
 
