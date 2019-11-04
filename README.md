@@ -5,7 +5,7 @@ This repository contains infornation about data exchange protocol of Goldenmotor
 
 1. [Intro](#intro)
 2. [Protocol description](#protocol_description)
-3. [Commands](http://https://github.com/SunnyWolf/goldenmotor_protocol/blob/master/commands.md "Commands")
+3. [Commands](https://github.com/SunnyWolf/goldenmotor_protocol/blob/master/commands.md)
 
 
 
