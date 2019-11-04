@@ -5,7 +5,7 @@ This repository contains infornation about data exchange protocol of Goldenmotor
 
 1. [Intro](#intro)
 2. [Protocol description](#protocol_description)
-    1. [Data packets](#data_packets)
+3. [Commands](http://https://github.com/SunnyWolf/goldenmotor_protocol/blob/master/commands.md "Commands")
 
 
 
@@ -22,8 +22,8 @@ If you have additional information about Goldenmotor's controllers and you want 
 ### Data packets <a name="data_packets"></a>
 All data packets in this protocol has length <= 256 bytes.
 
-| START | CMD    | Length | Payload       | CRC    |
-|-------|--------|:------:|---------------|--------|
+| START |  CMD   | LENGTH |   PAYLOAD     |  CRC   |
+|:-----:|:------:|:------:|:-------------:|:------:|
 | 0x66  | 1 byte | 1 byte |0 .. 32 bytes  | 1 byte |
 
 **START**
@@ -38,14 +38,15 @@ For more info see [list of commands](https://github.com/SunnyWolf/goldenmotor_pr
 
 **Length**
 
-This fild indicates payload length.
+This fild indicates payload length in bytes.
 
 **Payload**
 
 According code that I found in PI-800, data payload length can be 0 or 32 bytes.
 If payload length = 0, controller request for data or check connection.
-If payload length = 32, controller send data to controller.
-Payload contain items with 2 bytes length, first byte is High, second is Low.
+If payload length > 0, controller send data to user.
+Mainly payload contains items with 1 or 2 bytes length.
+Byte order is little-endian.
 
 |   1   |   2   |
 |-------|-------|
@@ -55,3 +56,10 @@ Payload contain items with 2 bytes length, first byte is High, second is Low.
 
 Data verification value (1 byte).
 The value is calculated by summing all bytes in data packet and takes low byte.
+```c
+uint8_t crc = 0;
+for (int i = 0; i < packetLen - 1; i++) {
+	crc = (uint8_t) (crc + packetBuffer[i]);
+}
+```
+
