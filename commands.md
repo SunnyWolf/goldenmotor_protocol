@@ -119,9 +119,7 @@ CMD filed is a sum of WRITE value and PARAMETER value.
 
 ### 0x01 - Main settings<a name="param_1">
 	
-1. FLAG - Flags <a name="p1_FLAG">
-	
-	Type: `UINT8`, offset: `0`
+1. FLAGS (`UINT8`, offset: `0`) <a name="p1_FLAGS">
 	
 	> bit 0: Regeneration braking enable
 	
@@ -131,55 +129,55 @@ CMD filed is a sum of WRITE value and PARAMETER value.
 	
 	> bit 3: PAS enable
 	
-2. PAS - PAS ratio <a name="p1_PAS">
+2. PAS (`UINT8`, offset: `1`) <a name="p1_PAS">
+	
+	PAS ratio
+	
+3. NBV (`UINT8`, offset: `2`) <a name="p1_NBV">
+	
+	Nominal battery voltage
+	
+4. OPV (`UINT8`, offset: `3`) <a name="p1_OPV">
+	
+	Over-voltage protection value
+	
+5. UPV (`UINT8`, offset: `4`) <a name="p1_UPV">
+	
+	Under-voltage protection value
 
-	Type: `UINT8`, offset: `1`
+6. BDC (`UINT8`, offset: `5`) <a name="p1_BDC">
 	
-3. NBV - Nominal battery voltage <a name="p1_NBV">
+	Battery drawn current
+	
+7. FS (`UINT16`, offset: `6`) <a name="p1_FS">
+	
+	Max forward speed, RPM
 
-	Type: `UINT8`, offset: `2`
+8. EBS (`UINT16`, offset: `8`) <a name="p1_EBS">
 	
-4. OPV - Over-voltage protection value <a name="p1_OPV">
+	Max EBS phase current
 	
-	Type: `UINT8`, offset: `3`
+9. ACC (`UINT16`, offset: `10`) <a name="p1_ACC">
 	
-5. UPV - Under-voltage protection value <a name="p1_UPV">
-
-	Type: `UINT8`, offset: `4`
-
-6. BDC - Battery drawn current <a name="p1_BDC">
-
-	Type: `UINT8`, offset: `5`
+	Acceleration, %
 	
-7. FS - Max forward speed, RPM <a name="p1_FS">
-
-	Type: `UINT16`, offset: `6`
-
-8. EBS - Max EBS phase current <a name="p1_EBS">
+10. RPC (`UINT16`, offset: `22`) <a name="p1_RPC">
 	
-	Type: `UINT16`, offset: `8`
+	Rated phase current
 	
-9. ACC - Acceleration, % <a name="p1_ACC">
-
-	Type: `UINT16`, offset: `10`
+11. RS (`UINT16`, offset: `24`) <a name="p1_RS">
 	
-10. RPC - Rated phase current <a name="p1_RPC">
+	Max reverse speed, RPM
 	
-	Type: `UINT16`, offset: `22`
+12. PWD (`UINT16`, offset: `26`) <a name="p1_PWD">
 	
-11. RS - Max reverse speed, RPM <a name="p1_RS">
-
-	Type: `UINT16`, offset: `24`
+	Password
 	
-12. PWD - Password <a name="p1_PWD">
-
-	Type: `UINT16`, offset: `26`
+13. TVS (`UINT16`, offset: `28`) <a name="p1_TVS">
 	
-13. TVS - Throttle valid speed, RPM <a name="p1_TVS">
-
-	Type: `UINT16`, offset: `28`
+	Throttle valid speed, RPM
 	
-|START | CMD  | LENGTH |[FLAG](#p1_FLAG)|[PAS](#p1_PAS)|[NBV](#p1_NBV)|[OPV](#p1_OPV)|[UPV](#p1_UPV)|[BDC](#p1_BDC)|[FS](#p1_FS)|[EBS](#p1_EBS)|[ACC](#p1_ACC)|    ?    |    ?    |    ?    |    ?    |    ?    |[RPC](#p1_RPC)|[RS](#p1_RS)|[PWD](#p1_PWD)|[TVS](#p1_TVS)|    ?    |   CRC   |
+|START | CMD  | LENGTH |[FLAGS](#p1_FLAGS)|[PAS](#p1_PAS)|[NBV](#p1_NBV)|[OPV](#p1_OPV)|[UPV](#p1_UPV)|[BDC](#p1_BDC)|[FS](#p1_FS)|[EBS](#p1_EBS)|[ACC](#p1_ACC)|    ?    |    ?    |    ?    |    ?    |    ?    |[RPC](#p1_RPC)|[RS](#p1_RS)|[PWD](#p1_PWD)|[TVS](#p1_TVS)|    ?    |   CRC   |
 |:----:|:----:|:------:|:--------------:|:------------:|:------------:|:------------:|:------------:|:------------:|:----------:|:------------:|:------------:|:-------:|:-------:|:-------:|:-------:|:-------:|:------------:|:----------:|:------------:|:------------:|:-------:|:-------:|
 | 0x66 | 0x10 |  0x20  |     1 byte     |    1 byte    |    1 byte    |    1 byte    |    1 byte    |    1 byte    |  2 bytes   |   2 bytes    |   2 bytes    | 2 bytes | 2 bytes | 2 bytes | 2 bytes | 2 bytes |   2 bytes    |  2 bytes   |   2 bytes    |   2 bytes    | 2 bytes | 2 bytes |
 
@@ -188,83 +186,83 @@ CMD filed is a sum of WRITE value and PARAMETER value.
 
 **Settings list:**
 
-1. HEA - Hall electrical angle <a name="p8_HEA"></a>
+1. HEA (`UINT16`, offset: `0`) <a name="p8_HEA"></a>
 
-	Type: `UINT16`, offset: `0`
+	Hall electrical angle
 	
 	> 0 - 120
 	
 	> 1 - 60
 
-2. PAO - Phase angle offset <a name="p8_PAO"></a>
+2. PAO (`UINT16`, offset: `2`) <a name="p8_PAO"></a>
 
-	Type: `UINT16`, offset: `2`
+	Phase angle offset
 	
 	> value = 182.04 * x
 
 	> -180 <= x <= 180
 
-3. PP  - Pole pairs <a name="p8_PP"></a>
-	
-	Type: `UINT16`, offset: `4`
+3. PP (`UINT16`, offset: `4`) <a name="p8_PP"></a>
+
+	Pole pairs
 	
 	> 2 <= value <= 28
 
-4. MS  - Motor speed <a name="p8_MS"></a>
-	
-	Type: `UINT16`, offset: `6`
+4. MS (`UINT16`, offset: `6`) <a name="p8_MS"></a>
+
+	Motor speed
 	
 	> 1 <= value <= 10500
 
-5. WD  - Warranty date <a name="p8_WD"></a>
+5. WD (`UINT16`, offset: `8`) <a name="p8_WD"></a>
+
+	Warranty date
+
+6. SV (`UINT16`, offset: `10`) <a name="p8_SV"></a>
+
+	Software version
+
+7. HWP (`UINT16`, offset: `12`) <a name="p8_HWP"></a>
+
+	High voltaige protection value
+
+	> value = 228 * x
+
+8. HWPE (`UINT16`, offset: `14`) <a name="p8_HWPE"></a>
 	
-	Type: `UINT16`, offset: `8`
-
-6. SV  - Software version <a name="p8_SV"></a>
-
-	Type: `UINT16`, offset: `10`
-
-7. HWP  - High voltaige protection value <a name="p8_HWP"></a>
-
-	Type: `UINT16`, offset: `12`
+	High voltaige protection exit value
 	
 	> value = 228 * x
 
-8. HWPE - High voltaige protection exit value <a name="p8_HWPE"></a>
+9. MWV (`UINT16`, offset: `16`) <a name="p8_MWV"></a>
 
-	Type: `UINT16`, offset: `14`
-	
+	Minimum work voltage
+
 	> value = 228 * x
 
-9. MWV - Minimum work voltage <a name="p8_MWV"></a>
+10. LVP (`UINT16`, offset: `18`) <a name="p8_LVP"></a>
 
-	Type: `UINT16`, offset: `16`
-	
+	Low voltage protection value
+
 	> value = 228 * x
 
-10. LVP - Low voltage protection value <a name="p8_LVP"></a>
+11. LVPE (`UINT16`, offset: `20`) <a name="p8_LVPE"></a>
 
-	Type: `UINT16`, offset: `18`
-	
-	> value = 228 * x
+	Low voltage protection exit value
 
-11. LVPE - Low voltage protection exit value <a name="p8_LVPE"></a>
-
-	Type: `UINT16`, offset: `20`
-	
 	> value = 228 * x
 	
 	> 0.0 < x < 4.0
 
-12. LVT - Low voltage triggering current reducing <a name="p8_LVT"></a>
+12. LVT (`UINT16`, offset: `26`) <a name="p8_LVT"></a>
 
-	Type: `UINT16`, offset: `26`
-	
+	Low voltage triggering current reducing
+
 	> value = 228 * x
 
-13. CFG - Config flags: <a name="p8_CFG"></a>
-
-	Type: `UINT16`, offset: `28`
+13. CFG (`UINT16`, offset: `28`) <a name="p8_CFG"></a>
+	
+	Config flags:
 	
 	> bit 5:  1
 	
@@ -278,9 +276,9 @@ CMD filed is a sum of WRITE value and PARAMETER value.
 
 	> bit 15: Motor blockage protection enabled (always 1)
 
-14. SPT - Stall protection time <a name="p8_SPT"></a>
-	
-	Type: `UINT16`, offset: `30`
+14. SPT (`UINT16`, offset: `30`)
+
+	Stall protection time
 	
 	> value = 10 * x
 
