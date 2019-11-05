@@ -9,7 +9,8 @@
     4. [0x42 - Get LCD info](#cmd_42)
 
 2. [Parameters](#parameters)
-    1. [0x08 - Protection settings](#param_8)
+    1. [0x01 - Main settings](#param_1)
+    2. [0x08 - Protection settings](#param_8)
 
 ## Commands <a name="commands"></a>
 
@@ -116,11 +117,11 @@ CMD filed is a sum of WRITE value and PARAMETER value.
 	
 ## Parameters <a name="parameters"></a>
 
-### 0x00 - Main settings<a name="param_0">
+### 0x01 - Main settings<a name="param_1">
 	
-1. FLAG - Flags <a name="p0_FLAG">
+1. FLAG - Flags <a name="p1_FLAG">
 	
-	`UINT8`
+	Type: `UINT8`, offset: `0`
 	
 	> bit 0: Regeneration braking enable
 	
@@ -130,55 +131,55 @@ CMD filed is a sum of WRITE value and PARAMETER value.
 	
 	> bit 3: PAS enable
 	
-2. PAS - PAS ratio <a name="p0_PAS">
+2. PAS - PAS ratio <a name="p1_PAS">
 
-	`UINT8`
+	Type: `UINT8`, offset: `1`
 	
-3. NBV - Nominal battery voltage <a name="p0_NBV">
+3. NBV - Nominal battery voltage <a name="p1_NBV">
 
-	`UINT8`
+	Type: `UINT8`, offset: `2`
 	
-4. OPV - Over-voltage protection value <a name="p0_OPV">
+4. OPV - Over-voltage protection value <a name="p1_OPV">
 	
-	`UINT8`
+	Type: `UINT8`, offset: `3`
 	
-5. UPV - Under-voltage protection value <a name="p0_UPV">
+5. UPV - Under-voltage protection value <a name="p1_UPV">
 
-	`UINT8`
+	Type: `UINT8`, offset: `4`
 
-6. BDC - Battery drawn current <a name="p0_BDC">
+6. BDC - Battery drawn current <a name="p1_BDC">
 
-	`UINT8`
+	Type: `UINT8`, offset: `5`
 	
-7. FS - Max forward speed, RPM <a name="p0_FS">
+7. FS - Max forward speed, RPM <a name="p1_FS">
 
-	`UINT16`
+	Type: `UINT16`, offset: `6`
 
-8. EBS - Max EBS phase current <a name="p0_EBS">
+8. EBS - Max EBS phase current <a name="p1_EBS">
 	
-	`UINT16`
+	Type: `UINT16`, offset: `8`
 	
-9. ACC - Acceleration, % <a name="p0_ACC">
+9. ACC - Acceleration, % <a name="p1_ACC">
 
-	`UINT16`
+	Type: `UINT16`, offset: `10`
 	
-10. RPC - Rated phase current <a name="p0_RPC">
+10. RPC - Rated phase current <a name="p1_RPC">
 	
-	`UINT16`
+	Type: `UINT16`, offset: `22`
 	
-11. RS - Max reverse speed, RPM <a name="p0_RS">
+11. RS - Max reverse speed, RPM <a name="p1_RS">
 
-	`UINT16`
+	Type: `UINT16`, offset: `24`
 	
-12. PWD - Password <a name="p0_PWD">
+12. PWD - Password <a name="p1_PWD">
 
-	`UINT16`
+	Type: `UINT16`, offset: `26`
 	
-13. TVS - Throttle valid speed, RPM <a name="p0_TVS">
+13. TVS - Throttle valid speed, RPM <a name="p1_TVS">
 
-	`UINT16`
+	Type: `UINT16`, offset: `28`
 	
-|START | CMD  | LENGTH |[FLAG](#p0_FLAG)|[PAS](#p0_PAS)|[NBV](#p0_NBV)|[OPV](#p0_OPV)|[UPV](#p0_UPV)|[BDC](#p0_BDC)|[FS](#p0_FS)|[EBS](#p0_EBS)|[ACC](#p0_ACC)|    ?    |    ?    |    ?    |    ?    |    ?    |[RPC](#p0_RPC)|[RS](#p0_RS)|[PWD](#p0_PWD)|[TVS](#p0_TVS)|    ?    |   CRC   |
+|START | CMD  | LENGTH |[FLAG](#p1_FLAG)|[PAS](#p1_PAS)|[NBV](#p1_NBV)|[OPV](#p1_OPV)|[UPV](#p1_UPV)|[BDC](#p1_BDC)|[FS](#p1_FS)|[EBS](#p1_EBS)|[ACC](#p1_ACC)|    ?    |    ?    |    ?    |    ?    |    ?    |[RPC](#p1_RPC)|[RS](#p1_RS)|[PWD](#p1_PWD)|[TVS](#p1_TVS)|    ?    |   CRC   |
 |:----:|:----:|:------:|:--------------:|:------------:|:------------:|:------------:|:------------:|:------------:|:----------:|:------------:|:------------:|:-------:|:-------:|:-------:|:-------:|:-------:|:------------:|:----------:|:------------:|:------------:|:-------:|:-------:|
 | 0x66 | 0x10 |  0x20  |     1 byte     |    1 byte    |    1 byte    |    1 byte    |    1 byte    |    1 byte    |  2 bytes   |   2 bytes    |   2 bytes    | 2 bytes | 2 bytes | 2 bytes | 2 bytes | 2 bytes |   2 bytes    |  2 bytes   |   2 bytes    |   2 bytes    | 2 bytes | 2 bytes |
 
