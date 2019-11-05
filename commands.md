@@ -116,6 +116,73 @@ CMD filed is a sum of WRITE value and PARAMETER value.
 	
 ## Parameters <a name="parameters"></a>
 
+### 0x00 - Main settings<a name="param_0">
+	
+1. FLAG - Flags <a name="p0_FLAG">
+	
+	`UINT8`
+	
+	> bit 0: Regeneration braking enable
+	
+	> bit 1: Reverse enable
+	
+	> bit 2: Throttle enable
+	
+	> bit 3: PAS enable
+	
+2. PAS - PAS ratio <a name="p0_PAS">
+
+	`UINT8`
+	
+3. NBV - Nominal battery voltage <a name="p0_NBV">
+
+	`UINT8`
+	
+4. OPV - Over-voltage protection value <a name="p0_OPV">
+	
+	`UINT8`
+	
+5. UPV - Under-voltage protection value <a name="p0_UPV">
+
+	`UINT8`
+
+6. BDC - Battery drawn current <a name="p0_BDC">
+
+	`UINT8`
+	
+7. FS - Max forward speed, RPM <a name="p0_FS">
+
+	`UINT16`
+
+8. EBS - Max EBS phase current <a name="p0_EBS">
+	
+	`UINT16`
+	
+9. ACC - Acceleration, % <a name="p0_ACC">
+
+	`UINT16`
+	
+10. RPC - Rated phase current <a name="p0_RPC">
+	
+	`UINT16`
+	
+11. RS - Max reverse speed, RPM <a name="p0_RS">
+
+	`UINT16`
+	
+12. PWD - Password <a name="p0_PWD">
+
+	`UINT16`
+	
+13. TVS - Throttle valid speed, RPM <a name="p0_TVS">
+
+	`UINT16`
+	
+|START | CMD  | LENGTH |[FLAG](#p0_FLAG)|[PAS](#p0_PAS)|[NBV](#p0_NBV)|[OPV](#p0_OPV)|[UPV](#p0_UPV)|[BDC](#p0_BDC)|[FS](#p0_FS)|[EBS](#p0_EBS)|[ACC](#p0_ACC)|    ?    |    ?    |    ?    |    ?    |    ?    |[RPC](#p0_RPC)|[RS](#p0_RS)|[PWD](#p0_PWD)|[TVS](#p0_TVS)|    ?    |   CRC   |
+|:----:|:----:|:------:|:--------------:|:------------:|:------------:|:------------:|:------------:|:------------:|:----------:|:------------:|:------------:|:-------:|:-------:|:-------:|:-------:|:-------:|:------------:|:----------:|:------------:|:------------:|:-------:|:-------:|
+| 0x66 | 0x10 |  0x20  |     1 byte     |    1 byte    |    1 byte    |    1 byte    |    1 byte    |    1 byte    |  2 bytes   |   2 bytes    |   2 bytes    | 2 bytes | 2 bytes | 2 bytes | 2 bytes | 2 bytes |   2 bytes    |  2 bytes   |   2 bytes    |   2 bytes    | 2 bytes | 2 bytes |
+
+
 ### 0x08 - Protection settings<a name="param_8"></a>
 
 **Settings list:**
