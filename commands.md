@@ -53,17 +53,17 @@ CMD filed is a sum of WRITE value and PARAMETER value.
 
 1. BAT <a name="cmd42_BAT">
 	
-	`UINT8`
+	Type: `UINT8`, offset: `0`
 	
 	Battery charging value. The value ranges from 0 to 5.
 	
 2. CUROLD <a name="cmd42_CUROLD">
 	
-	`UINT8`
+	Type: `UINT8`, offset: `1`
 	
 3. TSNS <a name=cmd42_TSNS>
 	
-	`UINT16`
+	Type: `UINT16`, offset: `2`
 	
 	The time that has elapsed since the last Hall sensor operation.
 	
@@ -71,7 +71,7 @@ CMD filed is a sum of WRITE value and PARAMETER value.
 	
 4. STATE <a name="cmd42_STATE">
 	
-	`UINT8`
+	Type: `UINT8`, offset: `4`
 	
 	> 0 - No error
 	
@@ -93,11 +93,11 @@ CMD filed is a sum of WRITE value and PARAMETER value.
 	
 5. USER <a name="cmd42_USER">
 	
-	`UINT16`
+	Type: `UINT16`, offset: `5`
 	
 6. VOL (UINT16)<a name="cmd42_VOL">
 	
-	`UINT16`
+	Type: `UINT16`, offset: `7`
 	
 	Battery voltage value multiplied by 10
 	
@@ -105,7 +105,7 @@ CMD filed is a sum of WRITE value and PARAMETER value.
 	
 7. CUR <a name="cmd42_CUR">
 	
-	`UINT16`
+	Type: `UINT16`, offset: `9`
 	
 	Current value multiplied by 10
 	
@@ -189,49 +189,86 @@ CMD filed is a sum of WRITE value and PARAMETER value.
 **Settings list:**
 
 1. HEA - Hall electrical angle <a name="p8_HEA"></a>
-    > 0 - 120
-    
-    > 1 - 60
+
+	Type: `UINT16`, offset: `0`
+	
+	> 0 - 120
+	
+	> 1 - 60
 
 2. PAO - Phase angle offset <a name="p8_PAO"></a>
-    > value = 182.04 * x
 
-    > -180 <= x <= 180
+	Type: `UINT16`, offset: `2`
+	
+	> value = 182.04 * x
+
+	> -180 <= x <= 180
 
 3. PP  - Pole pairs <a name="p8_PP"></a>
-    > 2 <= value <= 28
+	
+	Type: `UINT16`, offset: `4`
+	
+	> 2 <= value <= 28
 
 4. MS  - Motor speed <a name="p8_MS"></a>
-    > 1 <= value <= 10500
+	
+	Type: `UINT16`, offset: `6`
+	
+	> 1 <= value <= 10500
 
 5. WD  - Warranty date <a name="p8_WD"></a>
+	
+	Type: `UINT16`, offset: `8`
 
 6. SV  - Software version <a name="p8_SV"></a>
 
+	Type: `UINT16`, offset: `10`
+
 7. HWP  - High voltaige protection value <a name="p8_HWP"></a>
-    > value = 228 * x
+
+	Type: `UINT16`, offset: `12`
+	
+	> value = 228 * x
 
 8. HWPE - High voltaige protection exit value <a name="p8_HWPE"></a>
-    > value = 228 * x
+
+	Type: `UINT16`, offset: `14`
+	
+	> value = 228 * x
 
 9. MWV - Minimum work voltage <a name="p8_MWV"></a>
-    > value = 228 * x
+
+	Type: `UINT16`, offset: `16`
+	
+	> value = 228 * x
 
 10. LVP - Low voltage protection value <a name="p8_LVP"></a>
-    > value = 228 * x
+
+	Type: `UINT16`, offset: `18`
+	
+	> value = 228 * x
 
 11. LVPE - Low voltage protection exit value <a name="p8_LVPE"></a>
-    > value = 228 * x
 
-    > 0.0 < x < 4.0
+	Type: `UINT16`, offset: `20`
+	
+	> value = 228 * x
+	
+	> 0.0 < x < 4.0
 
 12. LVT - Low voltage triggering current reducing <a name="p8_LVT"></a>
-    > value = 228 * x
+
+	Type: `UINT16`, offset: `26`
+	
+	> value = 228 * x
 
 13. CFG - Config flags: <a name="p8_CFG"></a>
-    > bit 5:  1
 
-    > bit 8:  Clear undervoltage state while throttle off
+	Type: `UINT16`, offset: `28`
+	
+	> bit 5:  1
+	
+	> bit 8:  Clear undervoltage state while throttle off
 
 	> bit 11: Low voltage protection enabled
 
@@ -242,6 +279,9 @@ CMD filed is a sum of WRITE value and PARAMETER value.
 	> bit 15: Motor blockage protection enabled (always 1)
 
 14. SPT - Stall protection time <a name="p8_SPT"></a>
+	
+	Type: `UINT16`, offset: `30`
+	
 	> value = 10 * x
 
 **Sending parameter to controller**
