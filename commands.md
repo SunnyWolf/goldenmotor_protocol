@@ -6,6 +6,7 @@
     1. [0x02 - Echo](#cmd_2)
     2. [0x10 - Read parameter](#cmd_read)
     3. [0x20 - Write parameter](#cmd_write)
+    4. [0x42 - Get LCD info](#cmd_42)
 
 2. [Parameters](#parameters)
     1. [0x08 - Protection settings](#param_8)
@@ -47,6 +48,72 @@ CMD filed is a sum of WRITE value and PARAMETER value.
 |:------:|:------:|:------:|:----------:|:------:|
 |  0x66  |  0x28  | 1 byte |  N bytes   | 1 byte |
 
+### 0x42 - LCD info<a name="cmd_42">
+
+1. BAT <a name="cmd42_BAT">
+	
+	`UINT8`
+	
+	Battery charging value. The value ranges from 0 to 5.
+	
+2. CUROLD <a name="cmd42_CUROLD">
+	
+	`UINT8`
+	
+3. TSNS <a name=cmd42_TSNS>
+	
+	`UINT16`
+	
+	The time that has elapsed since the last Hall sensor operation.
+	
+	> RMP = 60000 / TSNS
+	
+4. STATE <a name="cmd42_STATE">
+	
+	`UINT8`
+	
+	> 0 - No error
+	
+	> 1 - Stalling protection
+	
+	> 2 - Throttle protection
+	
+	> 3 - Hall protection
+	
+	> 4 - Under-voltage protection
+	
+	> 5 - MOSFET protection
+	
+	> 6 - Controller over-heat protection
+	
+	> 7 - Motor over-current protection
+	
+	> 8 - Over-voltage protection
+	
+5. USER <a name="cmd42_USER">
+	
+	`UINT16`
+	
+6. VOL (UINT16)<a name="cmd42_VOL">
+	
+	`UINT16`
+	
+	Battery voltage value multiplied by 10
+	
+	> voltage = VOL / 10  
+	
+7. CUR <a name="cmd42_CUR">
+	
+	`UINT16`
+	
+	Current value multiplied by 10
+	
+	> current = CUR / 10
+	
+|START | CMD  | LENGTH |[BAT](#cmd42_BAT)|[CUROLD](#cmd42_CUROLD)|[TSNS](#cmd42_TSNS)|[STATE](#cmd42_STATE)|[USER](#cmd42_USER)|[VOL](#cmd42_VOL)|[CUR](#cmd42_CUR)|
+|:----:|:----:|:------:|:---------------:|:---------------------:|:-----------------:|:-------------------:|:-----------------:|:------------------:|:---------------:|
+| 0x66 | 0x42 |  0x??  |      1 byte     |         1 byte        |      2 bytes      |        1 byte       |      2 bytes      |    2 bytes       |     2 bytes     |
+	
 ## Parameters <a name="parameters"></a>
 
 ### 0x08 - Protection settings<a name="param_8"></a>
@@ -55,7 +122,7 @@ CMD filed is a sum of WRITE value and PARAMETER value.
 
 1. HEA - Hall electrical angle <a name="p8_HEA"></a>
     > 0 - 120
-
+    
     > 1 - 60
 
 2. PAO - Phase angle offset <a name="p8_PAO"></a>
@@ -70,6 +137,7 @@ CMD filed is a sum of WRITE value and PARAMETER value.
     > 1 <= value <= 10500
 
 5. WD  - Warranty date <a name="p8_WD"></a>
+
 6. SV  - Software version <a name="p8_SV"></a>
 
 7. HWP  - High voltaige protection value <a name="p8_HWP"></a>
