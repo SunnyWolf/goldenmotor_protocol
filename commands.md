@@ -6,7 +6,7 @@
     1. [0x02 - Echo](#cmd_2)
     2. [0x10 - Read parameter](#cmd_read)
     3. [0x20 - Write parameter](#cmd_write)
-    4. [0x42 - Get LCD info (only MaginPie)](#cmd_42)
+    4. [0x42 - Get LCD info (only MagicPie)](#cmd_42)
 
 2. [Parameters](#parameters)
     1. [0x01 - Main settings](#param_1)
@@ -49,7 +49,7 @@ CMD filed is a sum of WRITE value and PARAMETER value.
 |:------:|:------:|:------:|:----------:|:------:|
 |  0x66  |  0x28  | 1 byte |  N bytes   | 1 byte |
 
-### 0x42 - LCD info (only MaginPie)<a name="cmd_42">
+### 0x42 - LCD info (only MagicPie)<a name="cmd_42">
 
 1. BAT <a name="cmd42_BAT">
 	
