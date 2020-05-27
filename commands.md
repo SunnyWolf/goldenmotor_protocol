@@ -1,4 +1,5 @@
 # List of commands and parameters
+Mostly the commands described below are suitable for a VEC500 cotroller and needs testings for other types of controllers.
 
 ## Navigation
 
@@ -31,7 +32,7 @@ Check connection
 
 ### 0x10 - Read parameter <a name="cmd_read"></a>
 This command tells controller send selected parameter values to user.
-CMD filed is a sum of READ value and PARAMETER value.
+CMD field is a sum of READ value and PARAMETER value.
 
 **Example (reading protection settings)**
 
